@@ -59,23 +59,7 @@ def adicionar_entrega(Data, Status, Documento, Observações, link):
 
 
 # Carregando as entregas ao iniciar a aplicação
-st.header('Carregar entregas')
-
-with st.sidebar:
-    st.subheader('Como Preencher os dados')
-    st.write('1º: Escolha a data de envio.')
-    st.write('2º: Defina o Status.')
-    st.write('3º: Defina um documento.')
-    st.write('-Coloque primeiro o número da parcela em romanos por exemplo:')
-    st.write('-Parecela cinco: V')
-    st.write('-Em segundo coloque o nome do documento:')
-    st.write('-Virgílio Távora I')
-    st.write('-Texto final: V Virgílio Távora I')
-    st.write('4º: Se não houver observação, deixar em branco')
-
-
-
-    
+st.header('Adicionar Status')    
 st.subheader('Status')
 status = st.selectbox('Escolha o Status', ('Entrega SS', 'Envio à prefeitura', 'Recebimento Revisão',
                                                  'Assinado pela SS', 'Reenvio à Prefeitura','Concluído', 'Encaminhado para Ajustes', 'Outro') )
