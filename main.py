@@ -2,7 +2,10 @@ import streamlit as st
 
 def paginainicial():
     st.title("Second page")
-    
+
+with open("stylesmain.css") as f:
+    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
+
 pg = st.navigation([
     st.Page(paginainicial, title="Página Inicial", icon="🪙"),
     st.Page("controlador.py", title="Atualizar Status", icon="💾"),
