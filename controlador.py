@@ -34,6 +34,9 @@ fr.columns = cab
 st.set_page_config(page_title='Sistema de Cadastramento de Entregas',
                    layout='wide')
 
+with open("styles2.css") as f:
+    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
+
 #lista das entrega feitas atravez do formulario, as entregas vão se acumulando nessa lista até o resete de site
 if 'jsoninput' not in st.session_state:
     st.session_state.jsoninput = None
