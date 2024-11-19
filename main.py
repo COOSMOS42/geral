@@ -4,7 +4,8 @@ import streamlit as st
 with open("stylesmain.css") as f:
     st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
 
-def paginainicial()
+def paginainicial():
+    st.write(" ")
 
 pg = st.navigation([
     st.Page(paginainicial, title="Página Inicial", icon="🪙"),
