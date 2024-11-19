@@ -1,8 +1,5 @@
 import streamlit as st
 
-with open("stylesmain.css") as f:
-    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
-
 def paginainicial():
     st.write("Sistema de Acompanhamento")
 
