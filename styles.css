@@ -1,28 +1,28 @@
 .st-emotion-cache-12fmjuu{
   margin: 0;
-  height: 100vh;
+  height: 10vh;
   background: repeating-linear-gradient(
-      -60deg,
+      -6deg,
       transparent,
-      transparent 50px,
-      #e3e3e3 50px,
-      #e3e3e3 100px
+      transparent 5px,
+      #e3e3e3 5px,
+      #e3e3e3 10px
     ),
     repeating-linear-gradient(
-      60deg,
+      6deg,
       transparent,
-      transparent 50px,
-      #e3e3e3 50px,
-      #e3e3e3 100px
+      transparent 5px,
+      #e3e3e3 5px,
+      #e3e3e3 10px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 50px,
-      #e3e3e3 50px,
-      #e3e3e3 100px
+      transparent 5px,
+      #e3e3e3 5px,
+      #e3e3e3 10px
     );
-  background-size: 100px 173px;
+  background-size: 10px 17px;
 }
 
 #consultar-entregas{
