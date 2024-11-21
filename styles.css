@@ -4,23 +4,23 @@
   background: repeating-linear-gradient(
       -60deg,
       transparent,
-      transparent 5px,
-      #e3e3e3 5px,
-      #e3e3e3 10px
+      transparent 500px,
+      #e3e3e3 500px,
+      #e3e3e3 1000px
     ),
     repeating-linear-gradient(
       60deg,
       transparent,
-      transparent 5px,
-      #e3e3e3 5px,
-      #e3e3e3 10px
+      transparent 500px,
+      #e3e3e3 500px,
+      #e3e3e3 1000px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 5px,
-      #e3e3e3 5px,
-      #e3e3e3 10x
+      transparent 500px,
+      #e3e3e3 500px,
+      #e3e3e3 1000x
     );
   background-size: 10px 17px;
 }
