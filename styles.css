@@ -1,4 +1,29 @@
-
+#st-emotion-cache-12fmjuu{
+  margin: 0;
+  height: 100vh;
+  background: repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent 50px,
+      #e3e3e3 50px,
+      #e3e3e3 100px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      transparent,
+      transparent 50px,
+      #e3e3e3 50px,
+      #e3e3e3 100px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      #e3e3e3 50px,
+      #e3e3e3 100px
+    );
+  background-size: 100px 173px; /* Ajusta o tamanho do padrão */
+}
 #consultar-entregas{
 color: #000000;
 font-family: Poppins
