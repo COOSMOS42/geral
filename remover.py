@@ -34,10 +34,10 @@ fr.columns = cab
 st.set_page_config(layout='wide')
 
 #formulário para remoção de linhas da planilha do google sheets
-    with st.form('rmv', clear_on_submit=True, border=True):
-        st.subheader('Remover entrega')
-        ind = st.number_input('Qual entrega deseja remover?', 1, 9999, 1)
-        ind2 = ind + 1
+with st.form('rmv', clear_on_submit=True, border=True):
+    st.subheader('Remover entrega')
+    ind = st.number_input('Qual entrega deseja remover?', 1, 9999, 1)
+    ind2 = ind + 1
 
-        if st.form_submit_button('Remover'):
-            sheet.delete_rows(ind2)
+    if st.form_submit_button('Remover'):
+        sheet.delete_rows(ind2)
