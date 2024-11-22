@@ -1,29 +1,4 @@
-.st-emotion-cache-12fmjuu{
-  margin: 0;
-  height: 50vh;
-  background: repeating-linear-gradient(
-      -60deg,
-      transparent,
-      transparent 500px,
-      #e3e3e3 500px,
-      #e3e3e3 1000px
-    ),
-    repeating-linear-gradient(
-      60deg,
-      transparent,
-      transparent 500px,
-      #e3e3e3 500px,
-      #e3e3e3 1000px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 500px,
-      #e3e3e3 500px,
-      #e3e3e3 1000x
-    );
-  background-size: 10px 17px;
-}
+
 
 #consultar-entregas{
 color: #000000;
