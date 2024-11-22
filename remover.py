@@ -41,3 +41,7 @@ with st.form('rmv', clear_on_submit=True, border=True):
 
     if st.form_submit_button('Remover'):
         sheet.delete_rows(ind2)
+
+
+st.subheader('Lista de Status')
+st.dataframe(fr, use_container_width=True, height=800)
