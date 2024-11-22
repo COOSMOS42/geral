@@ -109,14 +109,24 @@ st.subheader('Salvar entregas')
 #cria um datafreame para que os dados contidos na lista jsoninput sejam alocadas para a planilha d google sheets
 st.session_state.jsoninput = pd.DataFrame(st.session_state.jsoninput)
 
-
-if st.session_state.jsoninput == fr:
-    st.warning('Conflito de Dados!')
-
-
 if st.button('Enviar para Google Sheets'):
-    set_with_dataframe(sheet,
-                       st.session_state.jsoninput,
-                       row=len(sheet.col_values(1)) + 1,
-                       include_column_header=False)
-    st.success('Dados enviados com sucesso!')
+    # Buscar os dados já existentes no Google Sheets
+    existing_data = pd.DataFrame(sheet.get_all_records())
+
+    # Remover duplicatas antes de enviar
+    if not existing_data.empty:
+        new_data = st.session_state.jsoninput[
+            ~st.session_state.jsoninput.isin(existing_data.to_dict('list')).all(axis=1)
+        ]
+    else:
+        new_data = st.session_state.jsoninput
+
+    # Verificar se há novos dados para enviar
+    if not new_data.empty:
+        set_with_dataframe(sheet,
+                           new_data,
+                           row=len(sheet.col_values(1)) + 1,
+                           include_column_header=False)
+        st.success('Dados enviados com sucesso!')
+    else:
+        st.info('Nenhum dado novo para enviar.')
