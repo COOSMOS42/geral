@@ -64,7 +64,7 @@ def adicionar_entrega(Data, Status, Documento, Observações, link):
 # Carregando as entregas ao iniciar a aplicação
 st.header('Adicionar Status')    
 st.subheader('Status')
-status = st.selectbox('Escolha o Status', ('Entrega SS', 'Envio à prefeitura', 'Recebimento Revisão',
+status = st.selectbox('Escolha o Status', ('Entrega SS', 'Envio à Prefeitura', 'Recebimento Revisão',
                                                  'Assinado pela SS', 'Reenvio à Prefeitura','Concluído', 'Encaminhado para Ajustes', 'Outro') )
 
 status2 = None
