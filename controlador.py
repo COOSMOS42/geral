@@ -109,6 +109,11 @@ st.subheader('Salvar entregas')
 #cria um datafreame para que os dados contidos na lista jsoninput sejam alocadas para a planilha d google sheets
 st.session_state.jsoninput = pd.DataFrame(st.session_state.jsoninput)
 
+
+if st.session_state.jsoninput == fr:
+    st.warning('Conflito de Dados!')
+
+
 if st.button('Enviar para Google Sheets'):
     set_with_dataframe(sheet,
                        st.session_state.jsoninput,
