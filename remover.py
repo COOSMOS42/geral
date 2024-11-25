@@ -49,5 +49,5 @@ with st.form('rmv', clear_on_submit=True, border=True):
 
 
 st.subheader('Lista de Status')
-if st.button('Mostrar Lista de Documentos')
+if st.button('Mostrar Lista de Documentos'):
     st.dataframe(fr, use_container_width=True, height=800)
