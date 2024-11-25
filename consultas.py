@@ -80,4 +80,6 @@ with st.form('datt', clear_on_submit=True, border=True):
         st.dataframe(df, use_container_width=True)
 
 st.subheader('Lista de Status')
-st.dataframe(fr, use_container_width=True, height=800)
+if st.button('Mostrar Lista de Documentos')
+    st.dataframe(fr, use_container_width=True, height=800)
+
