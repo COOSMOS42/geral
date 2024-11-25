@@ -40,7 +40,7 @@ with open("styles3.css") as f:
 
 #formulário para remoção de linhas da planilha do google sheets
 with st.form('rmv', clear_on_submit=True, border=True):
-    st.subheader('Remover entrega')
+    st.subheader('Remover Documentos')
     ind = st.number_input('Qual entrega deseja remover?', 1, 9999, 1)
     ind2 = ind + 1
 
