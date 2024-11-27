@@ -33,8 +33,8 @@ fr = fr[1:]
 fr.columns = cab
 st.set_page_config(layout='wide')
 
-with open("styles.css") as f:
-    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
+#with open("styles.css") as f:
+#    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
 
 st.header('Consultar Documentos')
 with st.form('proc', clear_on_submit=True, border=True):
