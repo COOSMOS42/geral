@@ -36,6 +36,8 @@ def plot_gauge(
     st.plotly_chart(fig, use_container_width=True)
 
 st.set_page_config(layout='wide')
+
+st.header("Resumo")
 column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
