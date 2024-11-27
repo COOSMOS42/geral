@@ -34,8 +34,8 @@ fr.columns = cab
 st.set_page_config(layout='wide')
 
 
-with open("styles3.css") as f:
-    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
+#with open("styles3.css") as f:
+#    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
 
 
 #formulário para remoção de linhas da planilha do google sheets
