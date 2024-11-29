@@ -73,7 +73,7 @@ column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
 
 with column_1:
-    first_value_col2 = fr["nentregas"].iloc[0] 
+    first_value_col2 = fr["nentregas"].iloc[1] 
     first_value_col2 = pd.to_numeric(first_value_col2, errors='coerce')
     plot_gauge(first_value_col2, "#78FF0F", "", "PARCELA 01", 8)
 
