@@ -69,8 +69,6 @@ st.set_page_config(layout='wide')
 
 st.header("Resumo")
 
-column_0 = st.columns(1)
-
 column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
@@ -115,12 +113,10 @@ total_entregas = sum([val1, val2, val3, val4, val5, val6, val7, val8, val9, val1
 total_max = 90
 progresso = (total_entregas / total_max) * 100 if total_max > 0 else 0
 
+st.markdown("### Progresso do Trabalho")
+st.progress(int(progresso)) 
 
-with column_0:
-    st.markdown("### Progresso do Trabalho")
-    st.progress(int(progresso))
-    st.write(f"Progresso atual: {progresso:.2f}%")
-    
+   
 with column_1:
     plot_gauge(val1, "#78FF0F", "", "PARCELA 01", 8)
 
