@@ -44,10 +44,11 @@ if 'jsoninput' not in st.session_state:
 
 #adiciona um entrega a lista acima
 # dia 07/11 foi alterado de Destinatário para Status pois não faz sentido manter como destinario se com status eu tenho mais informações
-def adicionar_entrega(Data, Status, Documento, Observações, link):
+def adicionar_entrega(Data, Status, Parcela, Documento, Observações, link):
     entrega = {
         'data': Data,
         'status': Status,
+        'parcela':Parcecla,
         'documento': Documento,
         'observações' : Observações,
         'link': link
@@ -102,7 +103,7 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
 
     if st.form_submit_button('Adicionar'):
         st.session_state.jsoninput = adicionar_entrega(
-            dataformat, status2, pardoc, obs, lnk)
+            dataformat, status2, parcela, documento, obs, lnk)
 
 st.subheader('Salvar entregas')
 
