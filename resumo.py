@@ -117,8 +117,7 @@ progresso = (total_entregas / total_max) * 100 if total_max > 0 else 0
 
 with column_0:
     st.progress(int(progresso))
-
-st.write(f"Progresso atual: {progresso:.2f}%")
+    st.write(f"Progresso atual: {progresso:.2f}%")
 with column_1:
     plot_gauge(val1, "#78FF0F", "", "PARCELA 01", 8)
 
