@@ -73,39 +73,61 @@ column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
 
 with column_1:
-    first_value_col2 = fr["nentregas"].iloc[1] 
-    first_value_col2 = pd.to_numeric(first_value_col2, errors='coerce')
-    plot_gauge(first_value_col2, "#78FF0F", "", "PARCELA 01", 8)
+    val1 = fr["nentregas"].iloc[0] 
+    val1 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val1, "#78FF0F", "", "PARCELA 01", 8)
 
 with column_2:
-    plot_gauge(8, "#78FF0F", "", "PARCELA 02", 8)
+    val2 = fr["nentregas"].iloc[0] 
+    val2 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val2, "#78FF0F", "", "PARCELA 02", 8)
 
 with column_3:
-    plot_gauge(8, "#78FF0F", "", "PARCELA 03", 8)
+    val3 = fr["nentregas"].iloc[0] 
+    val3 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val3, "#78FF0F", "", "PARCELA 03", 8)
 
 with column_4:
-    plot_gauge(7, "#78FF0F", "", "PARCELA 04", 8)
+    val4 = fr["nentregas"].iloc[0] 
+    val4 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val4, "#78FF0F", "", "PARCELA 04", 8)
 
 with column_5:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 05", 8)
+    val5 = fr["nentregas"].iloc[0] 
+    val5 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val5, "#78FF0F", "", "PARCELA 05", 8)
 
 with column_6:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 06", 8)
+    val6 = fr["nentregas"].iloc[0] 
+    val6 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val6, "#78FF0F", "", "PARCELA 06", 8)
 
 with column_7:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 07", 8)
+    val7 = fr["nentregas"].iloc[0] 
+    val7 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val7, "#78FF0F", "", "PARCELA 07", 8)
 
 with column_8:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 08", 8)
+    val8 = fr["nentregas"].iloc[0] 
+    val8 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val8, "#78FF0F", "", "PARCELA 08", 8)
 
 with column_9:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 09", 8)
+    val9 = fr["nentregas"].iloc[0] 
+    val9 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val9, "#78FF0F", "", "PARCELA 09", 8)
 
 with column_10:
-    plot_gauge(0, "#78FF0F", "", "PARCECLA 10", 8)
+    val10 = fr["nentregas"].iloc[0] 
+    val10 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val10, "#78FF0F", "", "PARCECLA 10", 8)
 
 with column_11:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 11", 8)
+    val11 = fr["nentregas"].iloc[0] 
+    val11 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val11, "#78FF0F", "", "PARCELA 11", 8)
 
 with column_12:
-    plot_gauge(0, "#78FF0F", "", "PARCELA 12", 8)
+    val12 = fr["nentregas"].iloc[0] 
+    val12 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(val12, "#78FF0F", "", "PARCELA 12", 8)
