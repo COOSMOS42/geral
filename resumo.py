@@ -24,7 +24,7 @@ client = Client(scope=scope, creds=creds)
 spreadsheetname = "controlador"
 spread = Spread(spreadsheetname, client = client)
 #link com a planilha do google sheets
-sheet = client.open(spreadsheetname).sheet1
+sheet = client.open(spreadsheetname).worksheet("resumo")
 
 val = sheet.get_all_values()
 # fr é a variavel da planilha do google sheets
