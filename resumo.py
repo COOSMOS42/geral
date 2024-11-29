@@ -4,7 +4,37 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+from datetime import datetime
+import gspread
+from google.oauth2.service_account import Credentials
+from google.oauth2 import service_account
+from gspread_pandas import Spread, Client
+from gspread_dataframe import set_with_dataframe
 
+# Definir escopos para Google Sheets e Google Drive
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
+
+# Carregar as credenciais de acesso do arquivo JSON
+creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes= scope)
+# Autenticar com o Google Sheets (conectar as credencias)
+client = Client(scope=scope, creds=creds)
+spreadsheetname = "controlador"
+spread = Spread(spreadsheetname, client = client)
+#link com a planilha do google sheets
+sheet = client.open(resumo).sheet1
+
+val = sheet.get_all_values()
+# fr é a variavel da planilha do google sheets
+fr = pd.DataFrame(val)
+#separa a primeira linha da planilha google sheets
+cab = fr.iloc[0]
+#fazendo com que a planilha seja lida a partir da primeira linha
+fr = fr[1:]
+#seta as colunas
+fr.columns = cab
 
 def plot_gauge(
         indicator_number, indicator_color, indicator_suffix, indicator_title, max_bound
