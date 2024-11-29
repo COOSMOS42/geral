@@ -73,7 +73,12 @@ column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
 
 with column_1:
-    plot_gauge(8, "#78FF0F", "", "PARCELA 01", 8)
+    # Pega o primeiro item da segunda coluna da planilha
+    first_value_col2 = fr.iloc[0, 2]  # Linha 0, Coluna 1 (índice zero-based)
+    
+    # Certifique-se de que o valor seja convertido para o tipo correto (ex.: numérico)
+    first_value_col2 = pd.to_numeric(first_value_col2, errors='coerce')
+    plot_gauge(first_value_col2, "#78FF0F", "", "PARCELA 01", 8)
 
 with column_2:
     plot_gauge(8, "#78FF0F", "", "PARCELA 02", 8)
