@@ -74,7 +74,8 @@ column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
 
 with column_1:
     # Pega o primeiro item da segunda coluna da planilha
-    first_value_col2 = fr.iloc[1, 2]  # Linha 0, Coluna 1 (índice zero-based)
+    first_value_col2 = fr.iloc[1, 2]  
+    #linha 0, Coluna 1 (índice zero-based)
     
     # Certifique-se de que o valor seja convertido para o tipo correto (ex.: numérico)
     first_value_col2 = pd.to_numeric(first_value_col2, errors='coerce')
