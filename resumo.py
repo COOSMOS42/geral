@@ -111,7 +111,7 @@ progresso = (total_entregas / total_max) * 100 if total_max > 0 else 0
 
 st.markdown("### Progresso do Trabalho")
 st.progress(int(progresso)) 
-
+st.write(f"Progresso atual: {progresso:.2f}%")
 
 
 column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
