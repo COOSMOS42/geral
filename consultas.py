@@ -47,6 +47,14 @@ with st.form('proc', clear_on_submit=True, border=True):
     # fr é a varaivel que contem a planilha do google sheets
     if st.form_submit_button('Procurar'):
 
+        progress_text = "Buscando dados, aguarde..."
+        my_bar = st.progress(0, text=progress_text)
+    
+        for percent_complete in range(100):
+            time.sleep(0.01)  # Pausa breve para efeito visual
+            my_bar.progress(percent_complete + 1, text=progress_text)
+
+
         if crit == 'Data':
             df = fr[fr['data'] == dat]
         if crit == 'Status':
@@ -55,8 +63,8 @@ with st.form('proc', clear_on_submit=True, border=True):
             df = fr[fr['documento'] == dat]
         if crit == 'Observação':
             df = fr[fr['observações'] == dat]
-            
 
+        my_bar.empty()
         st.dataframe(df, use_container_width=True)
 
 
