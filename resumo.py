@@ -69,10 +69,6 @@ st.set_page_config(layout='wide')
 
 st.header("Resumo")
 
-column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
-
-column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
-
 val1 = fr["nentregas"].iloc[0] 
 val1 = pd.to_numeric(val1, errors='coerce')
 
@@ -116,7 +112,12 @@ progresso = (total_entregas / total_max) * 100 if total_max > 0 else 0
 st.markdown("### Progresso do Trabalho")
 st.progress(int(progresso)) 
 
-   
+
+
+column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
+
+column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
+
 with column_1:
     plot_gauge(val1, "#78FF0F", "", "PARCELA 01", 8)
 
