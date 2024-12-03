@@ -87,14 +87,6 @@ with st.form('datt', clear_on_submit=True, border=True):
     df = fr[fr['data'].isin(lista_datas)]
     
     if st.form_submit_button('Pesquisar'):
-        progress_textt = "Processando intervalo de datas, aguarde..."
-        my_barr = st.progress(0, text=progress_textt)
-
-        for percent_complete in range(100):
-        time.sleep(0.01)
-        my_barr.progress(percent_complete + 1, text=progress_textt)
-
-        my_barr.empty()
         st.dataframe(df, use_container_width=True)
 
 st.subheader('Lista de Status')
