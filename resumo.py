@@ -119,37 +119,37 @@ column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
 
 with column_1:
-    plot_gauge(val1, "#78FF0F", "", "PARCELA 01", 8)
+    plot_gauge(val1, "#1C83E1", "", "PARCELA 01", 8)
 
 with column_2:
-    plot_gauge(val2, "#78FF0F", "", "PARCELA 02", 8)
+    plot_gauge(val2, "#1C83E1", "", "PARCELA 02", 8)
 
 with column_3:
-    plot_gauge(val3, "#78FF0F", "", "PARCELA 03", 8)
+    plot_gauge(val3, "#1C83E1", "", "PARCELA 03", 8)
 
 with column_4:
-    plot_gauge(val4, "#78FF0F", "", "PARCELA 04", 8)
+    plot_gauge(val4, "#1C83E1", "", "PARCELA 04", 8)
 
 with column_5:
-    plot_gauge(val5, "#78FF0F", "", "PARCELA 05", 8)
+    plot_gauge(val5, "#1C83E1", "", "PARCELA 05", 8)
 
 with column_6:
-    plot_gauge(val6, "#78FF0F", "", "PARCELA 06", 8)
+    plot_gauge(val6, "#1C83E1", "", "PARCELA 06", 8)
 
 with column_7:
-    plot_gauge(val7, "#78FF0F", "", "PARCELA 07", 8)
+    plot_gauge(val7, "#1C83E1", "", "PARCELA 07", 8)
 
 with column_8:
-    plot_gauge(val8, "#78FF0F", "", "PARCELA 08", 8)
+    plot_gauge(val8, "#1C83E1", "", "PARCELA 08", 8)
 
 with column_9:
-    plot_gauge(val9, "#78FF0F", "", "PARCELA 09", 8)
+    plot_gauge(val9, "#1C83E1", "", "PARCELA 09", 8)
 
 with column_10:
-    plot_gauge(val10, "#78FF0F", "", "PARCECLA 10", 8)
+    plot_gauge(val10, "#1C83E1", "", "PARCECLA 10", 8)
 
 with column_11:
-    plot_gauge(val11, "#78FF0F", "", "PARCELA 11", 8)
+    plot_gauge(val11, "#1C83E1", "", "PARCELA 11", 8)
 
 with column_12:
-    plot_gauge(val12, "#78FF0F", "", "PARCELA 12", 8)
+    plot_gauge(val12, "#1C83E1", "", "PARCELA 12", 8)
