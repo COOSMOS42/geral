@@ -118,3 +118,8 @@ if st.button('Enviar para Google Sheets'):
         st.success('Dados enviados com sucesso!')
     else:
         st.info('Nenhum dado novo para enviar.')
+
+
+st.subheader('Lista')
+with st.expander('Mostrar Lista'):
+    st.dataframe(fr, use_container_width=True, height=800)
