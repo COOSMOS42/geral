@@ -84,7 +84,7 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
 
     st.subheader('Adicionar Glosa')
 
-    if data == '' and parcela == '' and documento == '' and obs == '' :
+    if obs == '' :
         st.warning('Preencha todos os dados!')
 
     if st.form_submit_button('Adicionar'):
