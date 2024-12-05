@@ -44,12 +44,13 @@ if 'jsoninput' not in st.session_state:
 
 #adiciona um entrega a lista acima
 # dia 07/11 foi alterado de Destinatário para Status pois não faz sentido manter como destinario se com status eu tenho mais informações
-def adicionar_entrega(Data, Parcela, Documento, Glosa):
+def adicionar_entrega(Data, Parcela, Documento, Glosa, Observação):
     entrega = {
         'data': Data,
         'parcela': Parcela,
         'documento': Documento,
         'glosa' : Glosa,
+        'observação' : Observação
     }
 
     st.session_state.jsoninput = pd.concat(
@@ -80,13 +81,16 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
     pardoc = parcela + " " + documento
 
     st.subheader('Glosa')
-    obs = st.text_input('Qual o Valor da Glosa?')
+    glosa = st.text_input('Qual o Valor da Glosa?')
+
+    st.subheader('Observação')
+    obs = st.text_input('Alguma observação?')
 
     st.subheader('Adicionar Glosa')
 
     if st.form_submit_button('Adicionar'):
         st.session_state.jsoninput = adicionar_entrega(
-            dataformat, parcela, documento, obs)
+            dataformat, parcela, documento, glosa, obs)
 
 st.subheader('Salvar entregas')
 
