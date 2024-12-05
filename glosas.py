@@ -84,9 +84,6 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
 
     st.subheader('Adicionar Glosa')
 
-    if obs == '' :
-        st.warning('Preencha todos os dados!')
-
     if st.form_submit_button('Adicionar'):
         st.session_state.jsoninput = adicionar_entrega(
             dataformat, parcela, documento, obs)
