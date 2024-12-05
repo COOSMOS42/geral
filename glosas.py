@@ -89,7 +89,7 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
 
     if st.form_submit_button('Adicionar'):
         st.session_state.jsoninput = adicionar_entrega(
-            dataformat, status2, parcela, documento, obs)
+            dataformat, parcela, documento, obs)
 
 st.subheader('Salvar entregas')
 
