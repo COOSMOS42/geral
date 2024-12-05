@@ -41,7 +41,7 @@ st.header('Consultar Documentos')
 with st.form('proc', clear_on_submit=True, border=True):
     st.subheader('Procurar entregas')
     crit = st.selectbox('Selecione um critério:',
-                        ['Data', 'Status', 'Documento', 'Observação'])
+                        ['Data', 'Status', 'Parcela', 'Documento', 'Observação'])
 
     
     dat= st.text_input('Escreva o valor correspondente')
@@ -60,6 +60,8 @@ with st.form('proc', clear_on_submit=True, border=True):
             df = fr[fr['data'] == dat]
         if crit == 'Status':
             df = fr[fr['status'] == dat]
+        if crit == 'Parcela':
+            df = fr[fr['parcela'] == dat]
         if crit == 'Documento':
             df = fr[fr['documento'] == dat]
         if crit == 'Observação':
