@@ -44,11 +44,12 @@ if 'jsoninput' not in st.session_state:
 
 #adiciona um entrega a lista acima
 # dia 07/11 foi alterado de Destinatário para Status pois não faz sentido manter como destinario se com status eu tenho mais informações
-def adicionar_entrega(Data, Parcela, Documento, Glosa, Observação):
+def adicionar_entrega(Data, Parcela, Documento, Status, Glosa, Observação):
     entrega = {
         'data': Data,
         'parcela': Parcela,
         'documento': Documento,
+        'status' : Status,
         'glosa' : Glosa,
         'observação' : Observação
     }
@@ -79,6 +80,8 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
                                                  'XII') )
     documento = st.selectbox('Qual o documento referido?', ('Virgílio Távora I', 'Virgílio Távora II', 'Virgílio Távora III', 'Demócrito Dummar I', 'Demócrito Dummar II', 'Demócrito Dummar III', 'Blanchard Girão', 'Bonaparte Viana') )
     pardoc = parcela + " " + documento
+
+    sta = st.selectbox('Qual o documento referido?', ('Aguardando resposta', 'Em análise', 'Relatório de Desglosa', 'Pago')
 
     st.subheader('Glosa')
     glosa = st.text_input('Qual o Valor da Glosa?')
