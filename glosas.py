@@ -81,11 +81,11 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
     documento = st.selectbox('Qual o documento referido?', ('Virgílio Távora I', 'Virgílio Távora II', 'Virgílio Távora III', 'Demócrito Dummar I', 'Demócrito Dummar II', 'Demócrito Dummar III', 'Blanchard Girão', 'Bonaparte Viana') )
     pardoc = parcela + " " + documento
 
-    status = st.selectbox('Status da Glosa', ('Aguardando resposta', 'Em análise', 'Relatório de Desglosa', 'Pago')
+    status = st.selectbox('Status da Glosa', ('Aguardando resposta', 'Em análise', 'Relatório de Desglosa', 'Pago'))
 
     st.subheader('Glosa')
     glosa = st.text_input('Qual o Valor da Glosa?')
-
+    
     st.subheader('Observação')
     obs = st.text_input('Alguma observação?')
 
