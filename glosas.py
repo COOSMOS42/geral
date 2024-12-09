@@ -102,7 +102,7 @@ st.session_state.jsoninput = pd.DataFrame(st.session_state.jsoninput)
 
 if st.button('Enviar para Google Sheets'):
     # Buscar os dados já existentes no Google Sheets
-    existing_data = pd.DataFrame(sheet.get_all_records("glosas"))
+    existing_data = pd.DataFrame(worksheet.get_all_records("glosas"))
 
     # Remover duplicatas antes de enviar
     if not existing_data.empty:
