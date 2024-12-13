@@ -104,6 +104,7 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
     if st.form_submit_button('Adicionar'):
         st.session_state.jsoninput = adicionar_entrega(
             dataformat, status2, parcela, documento, obs, lnk)
+        st.success('Dados adicionados com sucesso!')
 
 st.subheader('Salvar')
 
