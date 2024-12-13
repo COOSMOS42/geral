@@ -111,6 +111,9 @@ st.subheader('Salvar')
 #cria um datafreame para que os dados contidos na lista jsoninput sejam alocadas para a planilha d google sheets
 st.session_state.jsoninput = pd.DataFrame(st.session_state.jsoninput)
 
+st.DataFrame(pd.DataFrame(st.session_state.jsoninput))
+
+
 if st.button('Enviar para Google Sheets'):
     # Buscar os dados já existentes no Google Sheets
     existing_data = pd.DataFrame(sheet.get_all_records())
