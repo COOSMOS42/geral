@@ -122,40 +122,40 @@ val12 = pd.to_numeric(val12, errors='coerce')
 
 
 
-val13 = fr["nentregas"].iloc[0] 
+val13 = fr["naprovados"].iloc[0] 
 val13 = pd.to_numeric(val13, errors='coerce')
 
-val14 = fr["nentregas"].iloc[1] 
+val14 = fr["naprovados"].iloc[1] 
 val14 = pd.to_numeric(val14, errors='coerce')
 
-val15 = fr["nentregas"].iloc[2] 
+val15 = fr["naprovados"].iloc[2] 
 val15 = pd.to_numeric(val15, errors='coerce')
 
-val16 = fr["nentregas"].iloc[3] 
+val16 = fr["naprovados"].iloc[3] 
 val16 = pd.to_numeric(val16, errors='coerce')
 
-val17 = fr["nentregas"].iloc[4] 
+val17 = fr["naprovados"].iloc[4] 
 val17 = pd.to_numeric(val17, errors='coerce')
 
-val18 = fr["nentregas"].iloc[5] 
+val18 = fr["naprovados"].iloc[5] 
 val18 = pd.to_numeric(val18, errors='coerce')
 
-val19 = fr["nentregas"].iloc[6] 
+val19 = fr[naprovados"].iloc[6] 
 val19 = pd.to_numeric(val19, errors='coerce')
 
-val20 = fr["nentregas"].iloc[7] 
+val20 = fr["naprovados"].iloc[7] 
 val20 = pd.to_numeric(val20, errors='coerce')
 
-val21 = fr["nentregas"].iloc[8] 
+val21 = fr["naprovados"].iloc[8] 
 val21 = pd.to_numeric(val21, errors='coerce')
 
-val22 = fr["nentregas"].iloc[9] 
+val22 = fr["naprovados"].iloc[9] 
 val22 = pd.to_numeric(val22, errors='coerce')
 
-val23 = fr["nentregas"].iloc[10] 
+val23 = fr["naprovados"].iloc[10] 
 val23 = pd.to_numeric(val23, errors='coerce')
 
-val24 = fr["nentregas"].iloc[11] 
+val24 = fr["naprovados"].iloc[11] 
 val24 = pd.to_numeric(val24, errors='coerce')
 
 
@@ -216,40 +216,40 @@ with column_12:
 
 
 with st.expander('Mostrar Aprovados'):
-    with colum_13:
+    with column_13:
         plot_gauge(val13, "#1C83E1", "", "PARCELA 1", 8)
 
-    with colum_14:
+    with column_14:
         plot_gauge(val14, "#1C83E1", "", "PARCELA 2", 8)
 
-    with colum_15:
+    with column_15:
         plot_gauge(val15, "#1C83E1", "", "PARCELA 3", 8)
     
-    with colum_16:
+    with column_16:
         plot_gauge(val16, "#1C83E1", "", "PARCELA 4", 8)
 
-    with colum_17:
+    with column_17:
         plot_gauge(val17, "#1C83E1", "", "PARCELA 5", 8)
     
-    with colum_18:
+    with column_18:
         plot_gauge(val18, "#1C83E1", "", "PARCELA 6", 8)
 
-    with colum_19:
+    with column_19:
         plot_gauge(val19, "#1C83E1", "", "PARCELA 7", 8)
     
-    with colum_20:
+    with column_20:
         plot_gauge(val20, "#1C83E1", "", "PARCELA 8", 8)
 
-    with colum_21:
+    with column_21:
         plot_gauge(val21, "#1C83E1", "", "PARCELA 9", 8)
 
-    with colum_22:
+    with column_22:
         plot_gauge(val22, "#1C83E1", "", "PARCELA 10", 8)
 
-    with colum_23:
+    with column_23:
         plot_gauge(val23, "#1C83E1", "", "PARCELA 11", 8)
 
-    with colum_24:
+    with column_24:
         plot_gauge(val24, "#1C83E1", "", "PARCELA 12", 8)
 
 
