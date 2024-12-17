@@ -140,7 +140,7 @@ val17 = pd.to_numeric(val17, errors='coerce')
 val18 = fr1["naprovados"].iloc[5] 
 val18 = pd.to_numeric(val18, errors='coerce')
 
-val19 = fr1[naprovados"].iloc[6] 
+val19 = fr1["naprovados"].iloc[6] 
 val19 = pd.to_numeric(val19, errors='coerce')
 
 val20 = fr1["naprovados"].iloc[7] 
