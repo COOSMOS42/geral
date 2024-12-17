@@ -174,10 +174,6 @@ column_1, column_2, column_3, column_4, column_5, column_6 = st.columns(6)
 
 column_7, column_8, column_9, column_10, column_11, column_12 = st.columns(6)
 
-column_13, column_14, column_15, column_16, column_17, column_18 = st.columns(6)
-
-column_19, column_20, column_21, column_22, column_23, column_24 = st.columns(6)
-
 with column_1:
     plot_gauge(val1, "#1C83E1", "", "PARCELA 01", 8)
 
@@ -216,6 +212,9 @@ with column_12:
 
 
 with st.expander('Mostrar Aprovados'):
+    column_13, column_14, column_15, column_16, column_17, column_18 = st.columns(6)
+    column_19, column_20, column_21, column_22, column_23, column_24 = st.columns(6)
+    
     with column_13:
         plot_gauge(val13, "#1C83E1", "", "PARCELA 1", 8)
 
