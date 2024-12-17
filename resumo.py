@@ -122,40 +122,40 @@ val12 = pd.to_numeric(val12, errors='coerce')
 
 
 
-val13 = fr["naprovados"].iloc[0] 
+val13 = fr1["naprovados"].iloc[0] 
 val13 = pd.to_numeric(val13, errors='coerce')
 
-val14 = fr["naprovados"].iloc[1] 
+val14 = fr1["naprovados"].iloc[1] 
 val14 = pd.to_numeric(val14, errors='coerce')
 
-val15 = fr["naprovados"].iloc[2] 
+val15 = fr1["naprovados"].iloc[2] 
 val15 = pd.to_numeric(val15, errors='coerce')
 
-val16 = fr["naprovados"].iloc[3] 
+val16 = fr1["naprovados"].iloc[3] 
 val16 = pd.to_numeric(val16, errors='coerce')
 
-val17 = fr["naprovados"].iloc[4] 
+val17 = fr1["naprovados"].iloc[4] 
 val17 = pd.to_numeric(val17, errors='coerce')
 
-val18 = fr["naprovados"].iloc[5] 
+val18 = fr1["naprovados"].iloc[5] 
 val18 = pd.to_numeric(val18, errors='coerce')
 
-val19 = fr[naprovados"].iloc[6] 
+val19 = fr1[naprovados"].iloc[6] 
 val19 = pd.to_numeric(val19, errors='coerce')
 
-val20 = fr["naprovados"].iloc[7] 
+val20 = fr1["naprovados"].iloc[7] 
 val20 = pd.to_numeric(val20, errors='coerce')
 
-val21 = fr["naprovados"].iloc[8] 
+val21 = fr1["naprovados"].iloc[8] 
 val21 = pd.to_numeric(val21, errors='coerce')
 
-val22 = fr["naprovados"].iloc[9] 
+val22 = fr1["naprovados"].iloc[9] 
 val22 = pd.to_numeric(val22, errors='coerce')
 
-val23 = fr["naprovados"].iloc[10] 
+val23 = fr1["naprovados"].iloc[10] 
 val23 = pd.to_numeric(val23, errors='coerce')
 
-val24 = fr["naprovados"].iloc[11] 
+val24 = fr1["naprovados"].iloc[11] 
 val24 = pd.to_numeric(val24, errors='coerce')
 
 
