@@ -216,40 +216,40 @@ with st.expander('Mostrar Aprovados'):
     column_19, column_20, column_21, column_22, column_23, column_24 = st.columns(6)
     
     with column_13:
-        plot_gauge(val13, "#1C83E1", "", "PARCELA 1", 8)
+        plot_gauge(val13, "#0D0D0D", "", "PARCELA 1", 8)
 
     with column_14:
-        plot_gauge(val14, "#1C83E1", "", "PARCELA 2", 8)
+        plot_gauge(val14, "#0D0D0D", "", "PARCELA 2", 8)
 
     with column_15:
-        plot_gauge(val15, "#1C83E1", "", "PARCELA 3", 8)
+        plot_gauge(val15, "#0D0D0D", "", "PARCELA 3", 8)
     
     with column_16:
-        plot_gauge(val16, "#1C83E1", "", "PARCELA 4", 8)
+        plot_gauge(val16, "#0D0D0D", "", "PARCELA 4", 8)
 
     with column_17:
-        plot_gauge(val17, "#1C83E1", "", "PARCELA 5", 8)
+        plot_gauge(val17, "#0D0D0D", "", "PARCELA 5", 8)
     
     with column_18:
-        plot_gauge(val18, "#1C83E1", "", "PARCELA 6", 8)
+        plot_gauge(val18, "#0D0D0D", "", "PARCELA 6", 8)
 
     with column_19:
-        plot_gauge(val19, "#1C83E1", "", "PARCELA 7", 8)
+        plot_gauge(val19, "#0D0D0D", "", "PARCELA 7", 8)
     
     with column_20:
-        plot_gauge(val20, "#1C83E1", "", "PARCELA 8", 8)
+        plot_gauge(val20, "#0D0D0D", "", "PARCELA 8", 8)
 
     with column_21:
-        plot_gauge(val21, "#1C83E1", "", "PARCELA 9", 8)
+        plot_gauge(val21, "#0D0D0D", "", "PARCELA 9", 8)
 
     with column_22:
-        plot_gauge(val22, "#1C83E1", "", "PARCELA 10", 8)
+        plot_gauge(val22, "#0D0D0D", "", "PARCELA 10", 8)
 
     with column_23:
-        plot_gauge(val23, "#1C83E1", "", "PARCELA 11", 8)
+        plot_gauge(val23, "#0D0D0D", "", "PARCELA 11", 8)
 
     with column_24:
-        plot_gauge(val24, "#1C83E1", "", "PARCELA 12", 8)
+        plot_gauge(val24, "#0D0D0D", "", "PARCELA 12", 8)
 
 
 
