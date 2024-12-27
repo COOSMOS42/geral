@@ -39,7 +39,7 @@ st.set_page_config(page_title='Sistema de Cadastramento de Entregas',
 
 #lista das entrega feitas atravez do formulario, as entregas vão se acumulando nessa lista até o resete de site
 if 'jsoninput' not in st.session_state:
-    st.session_state.jsoninput = None
+    st.session_state.jsoninput = pd.DataFrame()
 
 
 #adiciona um entrega a lista acima
@@ -66,7 +66,7 @@ def adicionar_entrega(Data, Parcela, Documento, Status, Glosa, Observação):
 st.header('Adicionar Glosa')    
    
 # formulário para preenchimento dos dados que serão inputados na lista cache
-with st.form('Preencha os dados', clear_on_submit=True, border=True):
+with st.form('Preencha os dados', clear_on_submit=False, border=True):
     st.subheader('Data')
     data = st.date_input('Data de envio',
                          datetime.now().date(),
@@ -106,19 +106,22 @@ if st.button('Enviar para Google Sheets'):
 
     # Remover duplicatas antes de enviar
     if not existing_data.empty:
-        new_data = st.session_state.jsoninput[
-            ~st.session_state.jsoninput.isin(existing_data.to_dict('list')).all(axis=1)
-        ]
+        new_data = st.session_state.jsoninput.loc[~st.session_state.jsoninput.apply(tuple, 1).isin(existing_data.apply(tuple, 1))]
     else:
         new_data = st.session_state.jsoninput
 
     # Verificar se há novos dados para enviar
     if not new_data.empty:
-        set_with_dataframe(sheet,
-                           new_data,
-                           row=len(sheet.col_values(1)) + 1,
-                           include_column_header=False)
-        st.success('Dados enviados com sucesso!')
+        try:
+            # Tenta enviar os dados para o Google Sheets
+            set_with_dataframe(sheet,
+                               new_data,
+                               row=len(sheet.col_values(1)) + 1,
+                               include_column_header=False)
+            st.success('Dados enviados com sucesso!')
+        except Exception as e:
+            # Se ocorrer um erro, exibe a mensagem de erro
+            st.error(f"Ocorreu um erro ao enviar os dados: {e}")
     else:
         st.info('Nenhum dado novo para enviar.')
 
