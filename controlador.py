@@ -105,7 +105,8 @@ with st.form('Preencha os dados', clear_on_submit=True, border=True):
         st.session_state.jsoninput = adicionar_entrega(
             dataformat, status2, parcela, documento, obs, lnk)
         st.success('Dados adicionados com sucesso!')
-
+        
+st.write(pd.DataFrame(st.session_state.jsoninput))
 st.subheader('Salvar')
 
 #cria um datafreame para que os dados contidos na lista jsoninput sejam alocadas para a planilha d google sheets
