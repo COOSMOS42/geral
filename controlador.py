@@ -128,11 +128,11 @@ if st.button('Enviar para Google Sheets'):
         new_data = st.session_state.jsoninput
 
     # Verificar se há novos dados para enviar
-    #if not new_data.empty:
-    #    set_with_dataframe(sheet,
+    if not new_data.empty:
+        set_with_dataframe(sheet,
                            new_data,
                            row=len(sheet.col_values(1)) + 1,
                            include_column_header=False)
-    #    st.success('Dados enviados com sucesso!')
-    #else:
-    #    st.info('Nenhum dado novo para enviar.')
+        st.success('Dados enviados com sucesso!')
+    else:
+        st.info('Nenhum dado novo para enviar.')
