@@ -25,7 +25,7 @@ client = gspread.authorize(creds)
 spreadsheetname = "trainee" 
 
 try:
-    sheet = client.open(spreadsheetname).sheet1
+    sheet = client.open(spreadsheetname).worksheet("lancamentos")
 except gspread.exceptions.SpreadsheetNotFound:
     st.error(f"Erro: A planilha '{spreadsheetname}' não foi encontrada. Certifique-se de que compartilhou ela com o e-mail da Conta de Serviço.")
     st.stop()
