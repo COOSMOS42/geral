@@ -1,7 +1,7 @@
 import streamlit as st
 
 pg = st.navigation([
-    st.Page("solit.py", title="Solicitar Peças"),
-    st.Page("consultas.py", title="Consultar Status")
+    st.Page("edit.py", title="Editar Peças"),
+    st.Page("remover.py", title="Remover Peças")
 ])
 pg.run()
