@@ -1,97 +1,76 @@
 import streamlit as st
 import pandas as pd
 import time
-from datetime import datetime, timedelta
 import gspread
 from google.oauth2.service_account import Credentials
 from google.oauth2 import service_account
 from gspread_pandas import Spread, Client
-from gspread_dataframe import set_with_dataframe
 
-# Definir escopos para Google Sheets e Google Drive
+# 1. DEFINIÇÃO DE ESCOPOS E AUTENTICAÇÃO
 scope = [
     "https://spreadsheets.google.com/feeds",
     "https://www.googleapis.com/auth/drive"
 ]
 
-# Carregar as credenciais de acesso do arquivo JSON
-creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes= scope)
-# Autenticar com o Google Sheets (conectar as credencias)
+# Carrega as credenciais salvas nos Secrets do Streamlit
+creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=scope)
 client = Client(scope=scope, creds=creds)
-spreadsheetname = "controlador"
-spread = Spread(spreadsheetname, client = client)
-#link com a planilha do google sheets
+
+# !!! AJUSTE AQUI: Nome da sua nova planilha de Inventário !!!
+spreadsheetname = "inventario_sae" 
 sheet = client.open(spreadsheetname).sheet1
 
+# 2. LEITURA E TRATAMENTO DOS DADOS DA PLANILHA
 val = sheet.get_all_values()
-# fr é a variavel da planilha do google sheets
-fr = pd.DataFrame(val)
-#separa a primeira linha da planilha google sheets
-cab = fr.iloc[0]
-#fazendo com que a planilha seja lida a partir da primeira linha
-fr = fr[1:]
-#seta as colunas
-fr.columns = cab
+df_inventario = pd.DataFrame(val)
+
+# Define a primeira linha como o cabeçalho das colunas
+cabecalho = df_inventario.iloc[0]
+df_inventario = df_inventario[1:]
+df_inventario.columns = cabecalho
+
+# Configura a página do Streamlit para o modo amplo
 st.set_page_config(layout='wide')
 
-#with open("styles.css") as f:
-#    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
+# 3. INTERFACE DO USUÁRIO
+st.header('📦 Sistema de Inventário - SAE')
 
-st.header('Consultar Documentos')
-with st.form('proc', clear_on_submit=True, border=True):
-    st.subheader('Procurar entregas')
-    crit = st.selectbox('Selecione um critério:',
-                        ['Data', 'Status', 'Parcela', 'Documento', 'Observação'])
-
+# Formulário de Busca por Subsistema
+with st.form('busca_subsistema', clear_on_submit=False, border=True):
+    st.subheader('Consultar Itens por Subsistema')
     
-    dat= st.text_input('Escreva o valor correspondente')
-    # fr é a varaivel que contem a planilha do google sheets
-    if st.form_submit_button('Procurar'):
+    # Criando uma caixa de texto para o usuário digitar o subsistema
+    # Dica: se a coluna 'subsistema' tiver nomes fixos, você pode trocar por st.selectbox mais tarde
+    lista_cr = ['Suspensão e Dinâmica Veicular', 'Aerodinâmica', 'Drivetrain', 'Powertrain', 'Eletrônica e Controle', 'Estrutura', 'Freio', 'Gestão de Pessoas', 'Marketing', 'Comercial', 'Patrimônio']
+    subsistema_procurado = st.selectbox('Selecione o Subsistema (Ex: Aerodinamica, Elétrica):', (lista_cr))
 
-        progress_text = "Buscando dados, aguarde..."
+    if st.form_submit_button('Pesquisar'):
+        progress_text = "Buscando dados no inventário, aguarde..."
         my_bar = st.progress(0, text=progress_text)
-    
+        
+        # Efeito visual de carregamento que você tinha no código original
         for percent_complete in range(100):
-            time.sleep(0.01)
+            time.sleep(0.005)
             my_bar.progress(percent_complete + 1, text=progress_text)
 
+        # !!! IMPORTANTE: Certifique-se de que a coluna na sua planilha se chama exatamente 'subsistema' !!!
+        # O .str.contains(..., case=False) ajuda a encontrar mesmo se o usuário digitar em maiúsculo ou minúsculo
+        if subsistema_procurado:
+            df_filtrado = df_inventario[df_inventario['subsistema'].str.contains(subsistema_procurado, case=False, na=False)]
+            
+            my_bar.empty() # Remove a barra de progresso
+            
+            # Mostra o resultado
+            if not df_filtrado.empty:
+                st.success(f"Foram encontrados {len(df_filtrado)} itens para o subsistema '{subsistema_procurado}'.")
+                st.dataframe(df_filtrado, use_container_width=True)
+            else:
+                st.warning(f"Nenhum item encontrado para o subsistema '{subsistema_procurado}'. Verifique a grafia.")
+        else:
+            my_bar.empty()
+            st.info("Por favor, digite um subsistema para pesquisar.")
 
-        if crit == 'Data':
-            df = fr[fr['data'] == dat]
-        if crit == 'Status':
-            df = fr[fr['status'] == dat]
-        if crit == 'Parcela':
-            df = fr[fr['parcela'] == dat]
-        if crit == 'Documento':
-            df = fr[fr['documento'] == dat]
-        if crit == 'Observação':
-            df = fr[fr['observações'] == dat]
-
-        my_bar.empty()
-        st.dataframe(df, use_container_width=True)
-
-
-with st.form('datt', clear_on_submit=True, border=True):
-    st.subheader('Pesquisa por Período')
-    data_inicial = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
-    data_final = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
-    if data_inicial > data_final:
-        st.error("A data inicial deve ser anterior ou igual à data final!")
-    else:
-        lista_datas = []
-        data_atual = data_inicial
-        while data_atual <= data_final:
-            a = str(data_atual)
-            dataformat = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
-            lista_datas.append(dataformat)
-            data_atual += timedelta(days=1)
-    
-    df = fr[fr['data'].isin(lista_datas)]
-    
-    if st.form_submit_button('Pesquisar'):
-        st.dataframe(df, use_container_width=True)
-
-st.subheader('Lista de Status')
-with st.expander('Mostrar Lista'):
-    st.dataframe(fr, use_container_width=True, height=800)
-
+# 4. VISUALIZAÇÃO COMPLETA DO INVENTÁRIO
+st.subheader('📋 Inventário Completo')
+with st.expander('Mostrar Todos os Itens'):
+    st.dataframe(df_inventario, use_container_width=True, height=600)
