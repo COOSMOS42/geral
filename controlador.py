@@ -3,9 +3,11 @@ import pandas as pd
 from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-from google.oauth2 import service_account
 from gspread_pandas import Spread, Client
 from gspread_dataframe import set_with_dataframe
+
+
+st.set_page_config(page_title='Lançamentos', layout='wide')
 
 # Definir escopos para Google Sheets e Google Drive
 scope = [
@@ -14,125 +16,77 @@ scope = [
 ]
 
 # Carregar as credenciais de acesso do arquivo JSON
-creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes= scope)
-# Autenticar com o Google Sheets (conectar as credencias)
-client = Client(scope=scope, creds=creds)
-spreadsheetname = "controlador"
-spread = Spread(spreadsheetname, client = client)
-#link com a planilha do google sheets
-sheet = client.open(spreadsheetname).sheet1
+creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=scope)
 
+# Autenticar com o gspread padrão (evita bugs de compatibilidade)
+client = gspread.authorize(creds)
+
+
+spreadsheetname = "trainee" 
+
+try:
+    sheet = client.open(spreadsheetname).sheet1
+except gspread.exceptions.SpreadsheetNotFound:
+    st.error(f"Erro: A planilha '{spreadsheetname}' não foi encontrada. Certifique-se de que compartilhou ela com o e-mail da Conta de Serviço.")
+    st.stop()
+
+# Puxar dados existentes
 val = sheet.get_all_values()
-# fr é a variavel da planilha do google sheets
-fr = pd.DataFrame(val)
-#separa a primeira linha da planilha google sheets
-cab = fr.iloc[0]
-#fazendo com que a planilha seja lida a partir da primeira linha
-fr = fr[1:]
-#seta as colunas
-fr.columns = cab
-st.set_page_config(page_title='Sistema de Cadastramento de Entregas',
-                   layout='wide')
+if val:
+    fr = pd.DataFrame(val)
+    cab = fr.iloc[0]
+    fr = fr[1:]
+    fr.columns = cab
+else:
+    fr = pd.DataFrame()
 
-#with open("styles2.css") as f:
-#    st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
-
-#lista das entrega feitas atravez do formulario, as entregas vão se acumulando nessa lista até o resete de site
 if 'jsoninput' not in st.session_state:
-    st.session_state.jsoninput = None
+    st.session_state.jsoninput = pd.DataFrame(columns=['B', 'C', 'D', 'E', 'F', 'G', 'H'])
 
-
-#adiciona um entrega a lista acima
-# dia 07/11 foi alterado de Destinatário para Status pois não faz sentido manter como destinario se com status eu tenho mais informações
-def adicionar_entrega(Data, Status, Parcela, Documento, Observações, link):
+def adicionar_entrega(B, C, D, E, F, G, H):
     entrega = {
-        'data': Data,
-        'status': Status,
-        'parcela': Parcela,
-        'documento': Documento,
-        'observações' : Observações,
-        'link': link
+        'B': [str(B)],
+        'C': [C],
+        'D': [D],
+        'E': [E],
+        'F': [F],
+        'G': [G],
+        'H': [str(H)]
     }
-
-    st.session_state.jsoninput = pd.concat(
-        [st.session_state.jsoninput,
-         pd.DataFrame(entrega, index=[0])],
-        ignore_index=True)
-
+    
+    nova_linha = pd.DataFrame(entrega)
+    st.session_state.jsoninput = pd.concat([st.session_state.jsoninput, nova_linha], ignore_index=True)
     return st.session_state.jsoninput
 
+with st.form('Preencha os dados', clear_on_submit=False, border=True):
+    st.subheader('Lançamento')
+    b = st.date_input(label='Selecione uma data', format='DD/MM/YYYY')
+    c = st.text_input('Descrição do lançamento')
 
-# Carregando as entregas ao iniciar a aplicação
-st.header('Adicionar Status')    
-st.subheader('Status')
-status = st.selectbox('Escolha o Status', ('Entrega SS', 'Envio à Prefeitura', 'Recebimento Revisão',
-                                                 'Assinado pela SS', 'Reenvio à Prefeitura','Concluído', 'Encaminhado para Ajustes', 'Outro') )
+    lista_cr = ['Suspensão e Dinâmica Veicular', 'Aerodinâmica', 'Drivetrain', 'Powertrain', 'Eletrônica e Controle', 'Estrutura', 'Freio', 'Gestão de Pessoas', 'Marketing', 'Comercial', 'Patrimônio']
+    d = st.selectbox('Selecione o centro de responsabilidade', lista_cr)
 
-status2 = None
-if status == 'Outro':
-    status2 = st.text_input('Qual o status?')
-else:
-    status2 = status
-    
-# formulário para preenchimento dos dados que serão inputados na lista cache
-with st.form('Preencha os dados', clear_on_submit=True, border=True):
-    st.subheader('Data')
-    data = st.date_input('Data de envio',
-                         datetime.now().date(),
-                         format='DD/MM/YYYY')
-    a = str(data)
-    dataformat = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+    e = st.text_input('Valor referente ao lançamento')
+    f = st.selectbox('Natureza', ("Faturamento", 'Custo'))
+    g = st.selectbox('Status', ("Concluído", 'Pendente'))
+    h = st.date_input(label='Selecione uma data de vencimento/entrega', format='DD/MM/YYYY')
 
-    st.subheader('Documento')
-    parcela = st.selectbox('Escolha a Parcela', ('I', 'II', 'III',
-                                                 'IV', 'V','VI', 'VII', 'VIII', 'IX', 'X', 'XI',
-                                                 'XII') )
-    documento = st.selectbox('Qual o documento referido?', ('Virgílio Távora I', 'Virgílio Távora II', 'Virgílio Távora III', 'Demócrito Dummar I', 'Demócrito Dummar II', 'Demócrito Dummar III', 'Blanchard Girão', 'Bonaparte Viana') )
-    pardoc = parcela + " " + documento
+    st.write('Salve as informações antes do envio')
+    if st.form_submit_button('Salvar'):
+        st.session_state.jsoninput = adicionar_entrega(b, c, d, e, f, g, h)
+        st.success('Informações salvas localmente com sucesso!')
 
-    st.subheader('Observação')
-    obs = st.text_input('Alguma observação?')
-
-    st.subheader('Link do Documento')
-    lnk = st.text_input('Adicione aqui o link do documento')
-
-    st.subheader('Adicionar Status')
-
-    if data == '' and destinatario == '' and documento == '':
-        st.warning('Preencha todos os dados!')
-
-    if st.form_submit_button('Adicionar'):
-        st.session_state.jsoninput = adicionar_entrega(
-            dataformat, status2, parcela, documento, obs, lnk)
-        st.success('Dados adicionados com sucesso!')
+if st.button('Enviar dados 📨'):
+    if not st.session_state.jsoninput.empty:
+        # Pega a próxima linha vazia com base nas linhas preenchidas na planilha
+        proxima_linha = len(sheet.col_values(1)) + 1
         
-st.write(pd.DataFrame(st.session_state.jsoninput))
-st.subheader('Salvar')
-
-#cria um datafreame para que os dados contidos na lista jsoninput sejam alocadas para a planilha d google sheets
-st.session_state.jsoninput = pd.DataFrame(st.session_state.jsoninput)
-
-#st.dataframe(pd.DataFrame(st.session_state.jsoninput))
-
-
-if st.button('Enviar para Google Sheets'):
-    # Buscar os dados já existentes no Google Sheets
-    existing_data = pd.DataFrame(sheet.get_all_records())
-
-    # Remover duplicatas antes de enviar
-    if not existing_data.empty:
-        new_data = st.session_state.jsoninput[
-            ~st.session_state.jsoninput.isin(existing_data.to_dict('list')).all(axis=1)
-        ]
-    else:
-        new_data = st.session_state.jsoninput
-
-    # Verificar se há novos dados para enviar
-    if not new_data.empty:
         set_with_dataframe(sheet,
-                           new_data,
-                           row=len(sheet.col_values(1)) + 1,
+                           st.session_state.jsoninput,
+                           row=proxima_linha,
                            include_column_header=False)
-        st.success('Dados enviados com sucesso!')
+        st.success('Dados enviados para o Google Sheets com sucesso!')
+        # Limpa o estado para o próximo envio
+        st.session_state.jsoninput = pd.DataFrame(columns=['B', 'C', 'D', 'E', 'F', 'G', 'H'])
     else:
-        st.info('Nenhum dado novo para enviar.')
+        st.warning('Não há dados salvos para enviar. Clique em "Salvar" no formulário primeiro.')
