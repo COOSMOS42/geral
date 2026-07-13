@@ -22,7 +22,7 @@ creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"],
 client = gspread.authorize(creds)
 
 
-spreadsheetname = "trainee" 
+spreadsheetname = "inventario_sae" 
 
 try:
     sheet = client.open(spreadsheetname).worksheet("lancamentos")
