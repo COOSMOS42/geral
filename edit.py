@@ -18,22 +18,6 @@ client = Client(scope=scope, creds=creds)
 spreadsheetname = "inventario_sae" 
 sheet = client.open(spreadsheetname).sheet1
 
-'''
-def carregar_dados():
-    val = sheet.get_all_values()
-    df = pd.DataFrame(val)
-    if not df.empty and len(df) > 1:
-        cabecalho = df.iloc[0]
-        df = df[1:]
-        df.columns = cabecalho
-        df = df.reset_index(drop=True)
-        df.insert(0, 'Linha na Planilha', df.index + 2)
-        return df
-    return pd.DataFrame()
-
-df_inventario = carregar_dados()
-'''
-
 # 2. LEITURA E TRATAMENTO DOS DADOS DA PLANILHA
 val = sheet.get_all_values()
 df_inventario = pd.DataFrame(val)
@@ -42,6 +26,10 @@ df_inventario = pd.DataFrame(val)
 cabecalho = df_inventario.iloc[0]
 df_inventario = df_inventario[1:]
 df_inventario.columns = cabecalho
+
+st.title("✏️ Editar Peças")
+
+st.divider()
 
 # Formulário de Busca por Subsistema
 with st.form('busca_subsistema', clear_on_submit=False, border=True):
@@ -76,15 +64,6 @@ with st.form('busca_subsistema', clear_on_submit=False, border=True):
         else:
             my_bar.empty()
             st.info("Por favor, digite um status para pesquisar.")
-
-st.title("✏️ Editar Peças")
-
-'''
-st.subheader("Tabela Atual de Inventário")
-st.dataframe(df_inventario, use_container_width=True)
-'''
-
-st.divider()
 
 st.subheader('Editar Dados da Peça')
 st.markdown("*Nota: Preencha apenas os campos que deseja alterar. Deixe em branco os que quiser manter como estão.*")
