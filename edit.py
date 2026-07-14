@@ -90,8 +90,8 @@ st.subheader('Editar Dados da Peça')
 st.markdown("*Nota: Preencha apenas os campos que deseja alterar. Deixe em branco os que quiser manter como estão.*")
 
 with st.form('edit_form', clear_on_submit=True, border=True):
-    linha = st.number_input('Linha na Planilha para editar:', min_value=1, step=1)
-    linha_editar = linha + 1
+    linha_editar = st.number_input('Linha na Planilha para editar:', min_value=1, step=1)
+#    linha_editar = linha + 1
     
     novo_valor = st.text_input('Novo Valor da Peça')
     nova_quantidade = st.text_input('Nova Quantidade')
