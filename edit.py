@@ -52,17 +52,17 @@ with st.form('busca_subsistema', clear_on_submit=False, border=True):
 
         # !!! IMPORTANTE: Certifique-se de que a coluna na sua planilha se chama exatamente 'status' !!!
         # O .str.contains(..., case=False) ajuda a encontrar mesmo se o usuário digitar em maiúsculo ou minúsculo
-        if subsistema_procurado:
-            df_filtrado = df_inventario[df_inventario['status'].str.contains(subsistema_procurado, case=False, na=False)]
+        if status_procurado:
+            df_filtrado = df_inventario[df_inventario['status'].str.contains(status_procurado, case=False, na=False)]
             
             my_bar.empty() # Remove a barra de progresso
             
             # Mostra o resultado
             if not df_filtrado.empty:
-                st.success(f"Foram encontrados {len(df_filtrado)} itens para o status '{subsistema_procurado}'.")
+                st.success(f"Foram encontrados {len(df_filtrado)} itens para o status '{status_procurado}'.")
                 st.dataframe(df_filtrado, use_container_width=True)
             else:
-                st.warning(f"Nenhum item encontrado para o status '{subsistema_procurado}'.")
+                st.warning(f"Nenhum item encontrado para o status '{status_procurado}'.")
         else:
             my_bar.empty()
             st.info("Por favor, digite um status para pesquisar.")
