@@ -34,6 +34,15 @@ def carregar_dados():
 df_inventario = carregar_dados()
 '''
 
+# 2. LEITURA E TRATAMENTO DOS DADOS DA PLANILHA
+val = sheet.get_all_values()
+df_inventario = pd.DataFrame(val)
+
+# Define a primeira linha como o cabeçalho das colunas
+cabecalho = df_inventario.iloc[0]
+df_inventario = df_inventario[1:]
+df_inventario.columns = cabecalho
+
 # Formulário de Busca por Subsistema
 with st.form('busca_subsistema', clear_on_submit=False, border=True):
     st.subheader('Consultar Itens por Status')
