@@ -68,8 +68,11 @@ with st.form('busca_subsistema', clear_on_submit=False, border=True):
             st.info("Por favor, digite um status para pesquisar.")
 
 st.title("✏️ Editar Peças")
+
+'''
 st.subheader("Tabela Atual de Inventário")
 st.dataframe(df_inventario, use_container_width=True)
+'''
 
 st.divider()
 
