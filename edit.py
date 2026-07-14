@@ -46,7 +46,7 @@ with st.form('edit_form', clear_on_submit=True, border=True):
     novo_valor = st.text_input('Novo Valor da Peça')
     nova_quantidade = st.text_input('Nova Quantidade')
     novo_status = st.selectbox('Novo Status', 
-                               options=['', 'Disponível', 'Em uso', 'Manutenção', 'Falta', 'Outro'],
+                               options=['', 'Disponível', 'Em uso', 'Manutenção', 'Falta', 'Outro', 'Em análise', 'Comprado', 'Aguardando chegada'],
                                help="Deixe em branco se não quiser alterar o status.")
     
     if st.form_submit_button('Salvar Edições'):
